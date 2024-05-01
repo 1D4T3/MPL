@@ -1,24 +1,24 @@
-<?php 
+<?php
 session_start();
 require_once 'config/koneksi.php';
 
-if(isset($_SESSION['login'])) {
-    header("Location: index.php");
+if (isset($_SESSION['login'])) {
+    header("Location: dashboard.php");
     exit;
 }
 
-if(isset($_POST['login'])) {
+if (isset($_POST['login'])) {
     $username = $_POST['username'];
     $password = $_POST['password'];
 
     $result = $conn->query("SELECT * FROM tb_user WHERE username = '$username'") or die(mysqli_error($conn));
-    if($result->num_rows === 1) {
+    if ($result->num_rows === 1) {
         $row = $result->fetch_assoc();
-        if(password_verify($password, $row['password'])) {
+        if (password_verify($password, $row['password'])) {
             // pasang session
             $_SESSION['login'] = $row;
 
-            header("Location: index.php");
+            header("Location: dashboard.php");
             exit;
         }
     }
