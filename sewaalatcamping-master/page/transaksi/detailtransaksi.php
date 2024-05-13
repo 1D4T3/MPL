@@ -1,7 +1,7 @@
 <?php
 
 if (!isset($_SESSION['idsewa'])) {
-    header('?p=transaksi');
+    header('?p=penyewaan');
 }
 
 ?>
@@ -9,7 +9,7 @@ if (!isset($_SESSION['idsewa'])) {
 <h1 class="mt-4">Detail Transaksi</h1>
 <ol class="breadcrumb mb-4">
     <li class="breadcrumb-item"><a href="index.php">Dashboard</a></li>
-    <li class="breadcrumb-item"><a href="?p=transaksi">Transaksi</a></li>
+    <li class="breadcrumb-item"><a href="?p=penyewaan">Transaksi</a></li>
     <li class="breadcrumb-item active">Detail Transaksi</li>
 </ol>
 <div class="card mb-4">

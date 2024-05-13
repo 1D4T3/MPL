@@ -92,7 +92,7 @@ $aksi = @$_GET['aksi'];
                 <div class="sb-sidenav-menu">
                     <div class="nav">
                         <div class="sb-sidenav-menu-heading">Core</div>
-                        <a class="nav-link" href="index.php">
+                        <a class="nav-link" href="dashboard.php">
                             <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                             Dashboard
                         </a>
@@ -108,6 +108,10 @@ $aksi = @$_GET['aksi'];
                         <a class="nav-link" href="?p=transaksi">
                             <div class="sb-nav-link-icon"><i class="fas fa-hands-helping" aria-hidden="true"></i></div>
                             Transaksi Penyewaan
+                        </a>
+                        <a class="nav-link" href="penjualan.php">
+                            <div class="sb-nav-link-icon"><i class="fas fa-hands-helping" aria-hidden="true"></i></div>
+                            Transaksi Penjualan
                         </a>
                     </div>
                 </div>
@@ -145,7 +149,9 @@ $aksi = @$_GET['aksi'];
                         }
                     } else if ($page == 'transaksi') {
                         if ($aksi == '') {
-                            require_once 'page/transaksi/transaksi.php';
+                            require_once 'page/transaksi/penyewaan.php';
+                        } else if ($aksi == 'penjualan') {
+                            require_once 'page/transaksi/penjualan.php';
                         } else if ($aksi == 'tambah') {
                             require_once 'page/transaksi/tambah.php';
                         } else if ($aksi == 'kembali') {
