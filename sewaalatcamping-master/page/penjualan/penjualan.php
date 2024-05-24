@@ -2,10 +2,10 @@
 require_once './config/functions.php';
 
 
-$sql = $conn->query("SELECT * FROM tb_penyewaan INNER JOIN tb_pelanggan 
-										ON tb_penyewaan.idpelanggan = tb_pelanggan.idpelanggan 
-                                        INNER JOIN tb_user ON tb_penyewaan.iduser = tb_user.iduser
-                                        WHERE status = 'sewa'
+$sql = $conn->query("SELECT * FROM tb_penjualan INNER JOIN tb_pelanggan 
+										ON tb_penjualan.idpelanggan = tb_pelanggan.idpelanggan 
+                                        INNER JOIN tb_user ON tb_penjualan.iduser = tb_user.iduser
+                                        WHERE status = 'jual'
 										") or die(mysqli_error($conn));
 
 if (isset($_SESSION['pesan'])) {
@@ -27,7 +27,7 @@ if (isset($_SESSION['pesan'])) {
   <li class="breadcrumb-item active">Data Transaksi</li>
 </ol>
 <div class="col-md-6">
-  <a href="?p=transaksi&aksi=pilih" class="btn btn-primary mb-3"><i class="fa fa-plus"></i> Tambah Transaksi</a>
+  <a href="?p=penjualan&aksi=pilih" class="btn btn-primary mb-3"><i class="fa fa-plus"></i> Tambah Transaksi</a>
 </div>
 <div class="card mb-4">
   <div class="card-header">
@@ -54,43 +54,20 @@ if (isset($_SESSION['pesan'])) {
           <?php
           $no = 1;
           while ($pecah = $sql->fetch_assoc()) {
-            $idsewa = $pecah['idsewa'];
+            $idsewa = $pecah['idjual'];
             ?>
             <tr>
               <td><?= $no++; ?></td>
               <td><?= $pecah['nama']; ?></td>
               <td><?= $pecah['nama_pelanggan']; ?></td>
-              <td><?= $pecah['tanggalsewa']; ?></td>
-              <td><?= $pecah['tanggalkembali']; ?></td>
-              <td>
-                <?php
-
-                $denda = 5000;
-                $tgl_dateline = $pecah['tanggalkembali'];
-                $tgl_kembali = date('Y-m-d');
-
-                //hitung selisih hari
-                $lambat = terlambat($tgl_dateline, $tgl_kembali);
-                $denda1 = $lambat * $denda;
-                ?>
-                <?php
-                if ($lambat > 0) {
-                  ?>
-                  <div style='color:red;'><?= $lambat ?> hari<br> (Rp. <?= number_format($denda1) ?>)</div>
-                  <?php
-                } else {
-                  echo "Tidak terlambat";
-                }
-                ?>
-              </td>
               <td><?= $pecah['status']; ?></td>
-              <td><?= $pecah['total'] + $denda1; ?></td>
+              <td><?= $pecah['total']; ?></td>
               <td>
-                <a href="?p=penyewaan&aksi=kembali&idsewa=<?= $pecah['idsewa']; ?>&denda1=<?= $denda1 ?>"
+                <a href="?p=penjualan&aksi=kembali&idjual=<?= $pecah['idjual']; ?>&denda1=<?= $denda1 ?>"
                   class="btn btn-info btn-sm"><i class="fas fa-undo mr-2"></i>Kembali Barang</a>
 
-                <a href="?p=penyewaan&aksi=detail&idsewa=<?= $pecah["idsewa"]; ?>" class="btn btn-success btn-sm"><i
-                    class="fas fa-info mr-2"></i>Detail Penyewaan</a>
+                <a href="?p=penjualan&aksi=detail&idjual=<?= $pecah["idjual"]; ?>" class="btn btn-success btn-sm"><i
+                    class="fas fa-info mr-2"></i>Detail Penjualan</a>
               </td>
             </tr>
           <?php } ?>

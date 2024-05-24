@@ -155,21 +155,21 @@ $aksi = @$_GET['aksi'];
                         } else if ($aksi == 'hapus') {
                             require_once 'page/pelanggan/hapus.php';
                         }
-                    } else if ($page == 'transaksi') {
+                    } else if ($page == 'penyewaan') {
                         if ($aksi == '') {
-                            require_once 'page/transaksi/penyewaan.php';
-                        } else if ($aksi == 'penjualan') {
-                            require_once 'page/transaksi/penjualan.php';
+                            require_once 'page/penyewaan/penyewaan.php';
+                        } else if ($aksi == 'penyewaan') {
+                            require_once 'page/penyewaan/penjualan.php';
                         } else if ($aksi == 'tambah') {
-                            require_once 'page/transaksi/tambah.php';
+                            require_once 'page/penyewaan/tambah.php';
                         } else if ($aksi == 'kembali') {
-                            require_once 'page/transaksi/kembali.php';
+                            require_once 'page/penyewaan/kembali.php';
                         } else if ($aksi == 'detail') {
-                            require_once 'page/transaksi/detailtransaksi.php';
+                            require_once 'page/penyewaan/detailtransaksi.php';
                         } else if ($aksi == 'pilih') {
-                            require_once('page/transaksi/pilihbarang.php');
+                            require_once('page/penyewaan/pilihbarang.php');
                         } else if ($aksi == 'simpan') {
-                            require_once('page/transaksi/simpan.php');
+                            require_once('page/penyewaan/simpan.php');
                         }
                     } else { ?>
                     <ol class="breadcrumb mb-4 mt-4">
@@ -313,7 +313,7 @@ $aksi = @$_GET['aksi'];
                                                 <td><?= $pecah['status']; ?></td>
                                                 <td><?= $pecah['total'] + $denda1; ?></td>
                                                 <td>
-                                                    <a href="?p=transaksi&aksi=detail&idsewa=<?= $pecah["idsewa"]; ?>"
+                                                    <a href="?p=penyewaan&aksi=detail&idsewa=<?= $pecah["idsewa"]; ?>"
                                                         class="btn btn-success btn-sm"><i
                                                             class="fas fa-info mr-2"></i>Detail Penyewaan</a>
                                                 </td>

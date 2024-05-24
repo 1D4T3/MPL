@@ -1,6 +1,6 @@
 <?php 
 if(!isset($_SESSION['cart'])){
-    header('Location: ?p=transaksi&aksi=pilih');
+    header('Location: ?p=penjualan&aksi=pilih');
 }
 
 $cart = unserialize(serialize($_SESSION['cart']));
@@ -38,5 +38,5 @@ for($i=0; $i<count($cart); $i++){
 //unset session keranjang
 unset($_SESSION['cart']);
 $_SESSION['pesan'] = "Data Transaksi sudah ditambahkan";
-header('Location: ?p=transaksi');
+header('Location: ?p=penjualan');
 ?>

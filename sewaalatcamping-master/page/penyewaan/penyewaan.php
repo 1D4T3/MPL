@@ -27,7 +27,7 @@ if (isset($_SESSION['pesan'])) {
     <li class="breadcrumb-item active">Data Transaksi</li>
 </ol>
 <div class="col-md-6">
-    <a href="?p=transaksi&aksi=pilih" class="btn btn-primary mb-3"><i class="fa fa-plus"></i> Tambah Transaksi</a>
+    <a href="?p=penyewaan&aksi=pilih" class="btn btn-primary mb-3"><i class="fa fa-plus"></i> Tambah Transaksi</a>
 </div>
 <div class="card mb-4">
     <div class="card-header">

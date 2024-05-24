@@ -15,4 +15,4 @@ while ($data = mysqli_fetch_array($mysql)) {
 }
 echo "<script>swal('Proses, pengembalian barang berhasil', {
     icon: 'success',
-}).then((willDelete) => {if(willDelete) {window.location='?p=transaksi';}} );</script>";
+}).then((willDelete) => {if(willDelete) {window.location='?p=penjualan';}} );</script>";

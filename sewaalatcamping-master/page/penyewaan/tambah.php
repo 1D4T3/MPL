@@ -41,13 +41,13 @@ if (!empty($_SESSION['cart'])) {
     <h1 class="mt-4">Tambah Barang</h1>
     <ol class="breadcrumb mb-4">
         <li class="breadcrumb-item"><a href="index.php">Dashboard</a></li>
-        <li class="breadcrumb-item"><a href="?p=transaksi">Transaksi</a></li>
-        <li class="breadcrumb-item"><a href="?p=transaksi&aksi=pilih">Pilih Barang</a></li>
+        <li class="breadcrumb-item"><a href="?p=penyewaan">Transaksi</a></li>
+        <li class="breadcrumb-item"><a href="?p=penyewaan&aksi=pilih">Pilih Barang</a></li>
         <li class="breadcrumb-item active">Tambah Barang</li>
     </ol>
     <div class="row row-col-2">
         <div class="col-2">
-            <a href="?p=transaksi&aksi=pilih" class="btn btn-warning mb-3" name="update"><i class="fa fa-plus"></i> Pilih Barang Lagi</a>
+            <a href="?p=penyewaan&aksi=pilih" class="btn btn-warning mb-3" name="update"><i class="fa fa-plus"></i> Pilih Barang Lagi</a>
         </div>
     </div>
     <div class="card mb-4">
@@ -56,7 +56,7 @@ if (!empty($_SESSION['cart'])) {
             Barang Terpilih
         </div>
         <div class="card-body">
-            <form method="POST" action="?p=transaksi&aksi=simpan">
+            <form method="POST" action="?p=penyewaan&aksi=simpan">
                 <div class="table-responsive">
                     <table class="table table-bordered">
                         <tr align="center">
@@ -88,7 +88,7 @@ if (!empty($_SESSION['cart'])) {
                                     <td><?= $cart[$i]['harga']; ?></td>
                                     <td>Rp. <?= number_format($total); ?></td>
                                     <td align="center">
-                                        <a href="?p=transaksi&aksi=tambah&index=<?= $index; ?>">
+                                        <a href="?p=penyewaan&aksi=tambah&index=<?= $index; ?>">
                                             <button class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></button>
                                         </a>
                                     </td>
@@ -141,6 +141,6 @@ if (!empty($_SESSION['cart'])) {
 <?php
 }
 // if (isset($_GET['index'])) {
-//     header('Location: ?p=transaksi&aksi=tambah');
+//     header('Location: ?p=penyewaan&aksi=tambah');
 // }
 ?>
