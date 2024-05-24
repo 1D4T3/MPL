@@ -47,6 +47,14 @@ $aksi = @$_GET['aksi'];
             } else {
                 echo "Halaman Transaksi";
             }
+        } else if ($page == 'penjualan') {
+            if ($aksi == 'tambah') {
+                echo "Tambah Penjualan";
+            } else if ($aksi == 'pilih') {
+                echo "Pilih barang";
+            } else {
+                echo "Halaman Transaksi";
+            }
         } else {
             echo "Dashboard";
         }
@@ -105,11 +113,11 @@ $aksi = @$_GET['aksi'];
                             <div class="sb-nav-link-icon"><i class="fas fa-boxes" aria-hidden="true"></i></div>
                             Data Barang
                         </a>
-                        <a class="nav-link" href="?p=transaksi">
+                        <a class="nav-link" href="?p=penyewaan">
                             <div class="sb-nav-link-icon"><i class="fas fa-hands-helping" aria-hidden="true"></i></div>
                             Transaksi Penyewaan
                         </a>
-                        <a class="nav-link" href="penjualan.php">
+                        <a class="nav-link" href="?p=penjualan">
                             <div class="sb-nav-link-icon"><i class="fas fa-hands-helping" aria-hidden="true"></i></div>
                             Transaksi Penjualan
                         </a>
