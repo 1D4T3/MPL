@@ -21,18 +21,18 @@ if (isset($_SESSION['pesan'])) {
 
 ?>
 
-<h1 class="mt-4">Data Transaksi</h1>
+<h1 class="mt-4">Data Transaksi Penjualan</h1>
 <ol class="breadcrumb mb-4">
   <li class="breadcrumb-item"><a href="index.php">Dashboard</a></li>
-  <li class="breadcrumb-item active">Data Transaksi</li>
+  <li class="breadcrumb-item active">Data Transaksi Penjualan</li>
 </ol>
 <div class="col-md-6">
-  <a href="?p=penjualan&aksi=pilih" class="btn btn-primary mb-3"><i class="fa fa-plus"></i> Tambah Transaksi</a>
+  <a href="?p=penjualan&aksi=pilih" class="btn btn-primary mb-3"><i class="fa fa-plus"></i> Tambah Transaksi Penjualan</a>
 </div>
 <div class="card mb-4">
   <div class="card-header">
     <i class="fas fa-table mr-1"></i>
-    Data Transaksi
+    Data Transaksi Penjualan
   </div>
   <div class="card-body">
     <div class="table-responsive">
@@ -42,9 +42,6 @@ if (isset($_SESSION['pesan'])) {
             <th>No</th>
             <th>Nama Petugas</th>
             <th>Nama Pelanggan</th>
-            <th>Tanggal Pinjam</th>
-            <th>Tanggal Kembali</th>
-            <th>Keterlambatan</th>
             <th>Status</th>
             <th>Total</th>
             <th>Aksi</th>
@@ -54,7 +51,7 @@ if (isset($_SESSION['pesan'])) {
           <?php
           $no = 1;
           while ($pecah = $sql->fetch_assoc()) {
-            $idsewa = $pecah['idjual'];
+            $idjual = $pecah['idjual'];
             ?>
             <tr>
               <td><?= $no++; ?></td>
@@ -63,7 +60,7 @@ if (isset($_SESSION['pesan'])) {
               <td><?= $pecah['status']; ?></td>
               <td><?= $pecah['total']; ?></td>
               <td>
-                <a href="?p=penjualan&aksi=kembali&idjual=<?= $pecah['idjual']; ?>&denda1=<?= $denda1 ?>"
+                <a href="?p=penjualan&aksi=kembali&idjual=<?= $pecah['idjual']; ?>"
                   class="btn btn-info btn-sm"><i class="fas fa-undo mr-2"></i>Kembali Barang</a>
 
                 <a href="?p=penjualan&aksi=detail&idjual=<?= $pecah["idjual"]; ?>" class="btn btn-success btn-sm"><i

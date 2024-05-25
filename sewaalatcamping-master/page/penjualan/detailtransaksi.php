@@ -6,16 +6,16 @@ if (!isset($_SESSION['idjual'])) {
 
 ?>
 
-<h1 class="mt-4">Detail Transaksi</h1>
+<h1 class="mt-4">Detail Transaksi Penjualan</h1>
 <ol class="breadcrumb mb-4">
     <li class="breadcrumb-item"><a href="index.php">Dashboard</a></li>
-    <li class="breadcrumb-item"><a href="?p=penjualan">Transaksi</a></li>
-    <li class="breadcrumb-item active">Detail Transaksi</li>
+    <li class="breadcrumb-item"><a href="?p=penjualan">Transaksi Penjualan</a></li>
+    <li class="breadcrumb-item active">Detail Transaksi Penjualan</li>
 </ol>
 <div class="card mb-4">
     <div class="card-header">
         <i class="fas fa-table mr-1"></i>
-        Detail Transaksi
+        Detail Transaksi Penjualan
     </div>
     <div class="card-body">
         <div class="table-responsive">
@@ -31,16 +31,16 @@ if (!isset($_SESSION['idjual'])) {
                 </thead>
                 <tbody>
                     <?php
-                    $sql = $conn->query("SELECT * FROM tb_detailsewa INNER JOIN tb_barang ON tb_detailsewa.idbarang = tb_barang.idbarang WHERE idsewa = $_GET[idsewa]") or die(mysqli_error($conn));
+                    $sql = $conn->query("SELECT * FROM tb_detailjual INNER JOIN tb_barang ON tb_detailjual.idbarang = tb_barang.idbarang WHERE idjual = $_GET[idjual]") or die(mysqli_error($conn));
 
                     $no = 1;
 
                     while ($data = $sql->fetch_assoc()) {
-                        $idsewa = $data['idsewa'];
+                        $idsewa = $data['idjual'];
                     ?>
                         <tr>
                             <td><?= $no++; ?></td>
-                            <td><?= $data['idsewa']; ?></td>
+                            <td><?= $data['idjual']; ?></td>
                             <td><?= $data['namabarang']; ?></td>
                             <td><?= $data['jumlah']; ?></td>
                             <td><?= $data['subharga']; ?></td>

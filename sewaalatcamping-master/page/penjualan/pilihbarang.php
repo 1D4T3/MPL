@@ -7,7 +7,7 @@ $tampilBarang = $conn->query("SELECT * FROM tb_barang ORDER BY jumlah_barang DES
 <h1 class="mt-4">Pilih barang</h1>
 <ol class="breadcrumb mb-4">
     <li class="breadcrumb-item"><a href="index.php">Dashboard</a></li>
-    <li class="breadcrumb-item"><a href="?p=penjualan">Data Transaksi</a></li>
+    <li class="breadcrumb-item"><a href="?p=penjualan">Data Transaksi Penjualan</a></li>
     <li class="breadcrumb-item active">Pilih Barang</li>
 </ol>
 <div class="card mb-4">

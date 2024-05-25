@@ -6,14 +6,12 @@ if(!isset($_SESSION['cart'])){
 $cart = unserialize(serialize($_SESSION['cart']));
 $total_item = 0;
 $total_bayar = 0;
-$denda = 0;
+
 $iduser = $_SESSION['login']['iduser'];
 $nama_pelanggan = $_POST['nama'];
 $pecahN = explode('.', $nama_pelanggan);
 $idpelanggan = $pecahN[0];
 $namapelanggan = $pecahN[1];
-$tgl_sewa = date('Y-m-d',strtotime($_POST['tgl_sewa']));
-$tgl_kembali = date('Y-m-d',strtotime($_POST['tgl_kembali']));
 
 for ($i=0; $i<count($cart); $i++){
     $total_item += $cart[$i]['jumlah'];
@@ -21,8 +19,8 @@ for ($i=0; $i<count($cart); $i++){
 }
 
 //save data penyewaan ke database
-$conn->query("INSERT INTO tb_penyewaan (iduser, idpelanggan, tanggalsewa, tanggalkembali, denda, total, `status`) VALUES ('$iduser', '$idpelanggan','$tgl_sewa','$tgl_kembali',0,'$total_bayar','sewa')") or die(mysqli_error($conn));
-$idsewa = mysqli_insert_id($conn);
+$conn->query("INSERT INTO tb_penjualan (iduser, idpelanggan, total, `status`) VALUES ('$iduser', '$idpelanggan',0,'$total_bayar','jual')") or die(mysqli_error($conn));
+$idjual = mysqli_insert_id($conn);
 
 
 for($i=0; $i<count($cart); $i++){
@@ -30,7 +28,7 @@ for($i=0; $i<count($cart); $i++){
     $jumlah = $cart[$i]['jumlah'];
     $subharga = $cart[$i]['harga'] * $cart[$i]['jumlah'];
 
-    $conn->query("INSERT INTO tb_detailsewa (idsewa, idbarang, jumlah, subharga) VALUES('$idsewa', '$idbarang', '$jumlah', '$subharga')")or die(mysqli_error($conn));
+    $conn->query("INSERT INTO tb_detailjual (idjual, idbarang, jumlah, subharga) VALUES('$idjual', '$idbarang', '$jumlah', '$subharga')")or die(mysqli_error($conn));
     $conn->query("UPDATE tb_barang SET jumlah_barang = (jumlah_barang-$jumlah) WHERE idbarang = '$idbarang'")or die(mysqli_error($conn));
 
 }

@@ -41,7 +41,7 @@ if (!empty($_SESSION['cart'])) {
     <h1 class="mt-4">Tambah Barang</h1>
     <ol class="breadcrumb mb-4">
         <li class="breadcrumb-item"><a href="index.php">Dashboard</a></li>
-        <li class="breadcrumb-item"><a href="?p=penjualan">Transaksi</a></li>
+        <li class="breadcrumb-item"><a href="?p=penjualan">Transaksi Penjualan</a></li>
         <li class="breadcrumb-item"><a href="?p=penjualan&aksi=pilih">Pilih Barang</a></li>
         <li class="breadcrumb-item active">Tambah Barang</li>
     </ol>
@@ -122,18 +122,11 @@ if (!empty($_SESSION['cart'])) {
                                 ?>
                             </select>
                         </div>
-                        <div class="form-group">
-                            <label for="tgl_sewa">Tanggal Sewa</label>
-                            <input type="date" name="tgl_sewa" id="tgl_sewa" class="form-control" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="tgl_kembali">Tanggal Kembali</label>
-                            <input type="date" name="tgl_kembali" id="tgl_kembali" class="form-control" required>
-                        </div>
+                        
                     </table>
                 </div>
                 <div class="form-group">
-                    <button type="submit" name="submit" class="btn btn-success btn-sm">Simpan Data Penyewaan</button>
+                    <button type="submit" name="submit" class="btn btn-success btn-sm">Simpan Data Penjualan</button>
                 </div>
             </form>
         </div>
