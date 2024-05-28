@@ -159,7 +159,7 @@ $aksi = @$_GET['aksi'];
                         if ($aksi == '') {
                             require_once 'page/penyewaan/penyewaan.php';
                         } else if ($aksi == 'penyewaan') {
-                            require_once 'page/penyewaan/penjualan.php';
+                            require_once 'page/penyewaan/penyewaan.php';
                         } else if ($aksi == 'tambah') {
                             require_once 'page/penyewaan/tambah.php';
                         } else if ($aksi == 'kembali') {
@@ -170,6 +170,22 @@ $aksi = @$_GET['aksi'];
                             require_once('page/penyewaan/pilihbarang.php');
                         } else if ($aksi == 'simpan') {
                             require_once('page/penyewaan/simpan.php');
+                        }
+                    } else if ($page == 'penjualan') {
+                        if ($aksi == '') {
+                            require_once 'page/penjualan/penjualan.php';
+                        } else if ($aksi == 'penjualan') {
+                            require_once 'page/penjualan/penjualan.php';
+                        } else if ($aksi == 'tambah') {
+                            require_once 'page/penjualan/tambah.php';
+                        } else if ($aksi == 'kembali') {
+                            require_once 'page/penjualan/kembali.php';
+                        } else if ($aksi == 'detail') {
+                            require_once 'page/penjualan/detailtransaksi.php';
+                        } else if ($aksi == 'pilih') {
+                            require_once ('page/penjualan/pilihbarang.php');
+                        } else if ($aksi == 'simpan') {
+                            require_once ('page/penjualan/simpan.php');
                         }
                     } else { ?>
                     <ol class="breadcrumb mb-4 mt-4">
