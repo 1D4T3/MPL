@@ -39,13 +39,13 @@ $aksi = @$_GET['aksi'];
             } else {
                 echo "Halaman Pelanggan";
             }
-        } else if ($page == 'transaksi') {
+        } else if ($page == 'penyewaan') {
             if ($aksi == 'tambah') {
-                echo "Tambah Transaksi";
+                echo "Tambah penyewaan";
             } else if ($aksi == 'pilih') {
                 echo "Pilih barang";
             } else {
-                echo "Halaman Transaksi";
+                echo "Halaman penyewaan";
             }
         } else if ($page == 'penjualan') {
             if ($aksi == 'tambah') {
@@ -53,7 +53,7 @@ $aksi = @$_GET['aksi'];
             } else if ($aksi == 'pilih') {
                 echo "Pilih barang";
             } else {
-                echo "Halaman Transaksi";
+                echo "Halaman Penjualan";
             }
         } else {
             echo "Dashboard";

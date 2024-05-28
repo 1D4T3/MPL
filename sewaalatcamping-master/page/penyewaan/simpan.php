@@ -38,5 +38,5 @@ for($i=0; $i<count($cart); $i++){
 //unset session keranjang
 unset($_SESSION['cart']);
 $_SESSION['pesan'] = "Data Transaksi sudah ditambahkan";
-header('Location: ?p=penyewaan&aksi=selesai');
+// header('Location: ?p=penyewaan');
 ?>

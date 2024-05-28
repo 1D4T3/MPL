@@ -18,7 +18,7 @@ for ($i=0; $i<count($cart); $i++){
     $total_bayar += $cart[$i]['jumlah'] * $cart[$i]['harga'];
 }
 
-//save data penyewaan ke database
+//save data penjualan ke database
 $conn->query("INSERT INTO tb_penjualan (iduser, idpelanggan, total, `status`) VALUES ('$iduser', '$idpelanggan',0,'$total_bayar','jual')") or die(mysqli_error($conn));
 $idjual = mysqli_insert_id($conn);
 
