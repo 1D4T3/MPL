@@ -188,6 +188,8 @@ $aksi = @$_GET['aksi'];
                             require_once ('page/penjualan/pilihbarang.php');
                         } else if ($aksi == 'simpan') {
                             require_once ('page/penjualan/simpan.php');
+                        } else if ($aksi == 'cetak') {
+                            require_once ('page/penjualan/cetak.php');
                         }
                     } else { ?>
                     <ol class="breadcrumb mb-4 mt-4">
