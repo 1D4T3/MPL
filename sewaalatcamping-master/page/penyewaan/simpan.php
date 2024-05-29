@@ -1,7 +1,8 @@
 <?php 
 if(!isset($_SESSION['cart'])){
-    header('Location: ?p=penyewaan&aksi=pilih');
+    header('Location: ?p=penyewaan&aksi=penyewaan');
 }
+ob_start();
 
 $cart = unserialize(serialize($_SESSION['cart']));
 $total_item = 0;
@@ -38,5 +39,7 @@ for($i=0; $i<count($cart); $i++){
 //unset session keranjang
 unset($_SESSION['cart']);
 $_SESSION['pesan'] = "Data Transaksi sudah ditambahkan";
-// header('Location: ?p=penyewaan');
+header('Location: http://localhost/sewaalatcamping-master/dashboard.php?p=penyewaan&aksi=selesai');
+ob_end_flush();
+exit;
 ?>

@@ -170,7 +170,9 @@ $aksi = @$_GET['aksi'];
                             require_once('page/penyewaan/pilihbarang.php');
                         } else if ($aksi == 'simpan') {
                             require_once('page/penyewaan/simpan.php');
-                        }
+                        } else if ($aksi == 'cetak') {
+                            require_once('page/penyewaan/cetak.php');
+                        } 
                     } else if ($page == 'penjualan') {
                         if ($aksi == '') {
                             require_once 'page/penjualan/penjualan.php';
