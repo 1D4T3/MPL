@@ -1,4 +1,4 @@
-<?php 
+<?php
 // menampilkan DB pelanggan
 $sqlPelanggan = $conn->query("SELECT * FROM tb_pelanggan ORDER BY nama_pelanggan DESC") or die(mysqli_error($conn));
 
@@ -10,10 +10,7 @@ $sqlPelanggan = $conn->query("SELECT * FROM tb_pelanggan ORDER BY nama_pelanggan
 </ol>
 <div class="col-md-12">
     <a href="?p=pelanggan&aksi=tambah" class="btn btn-primary mb-3"><i class="fa fa-plus"></i> Tambah Data Pelanggan</a>
-    <a href="./laporan/laporan_pelanggan_excel.php" target="_blank" class="btn btn-success mb-3"><i class="fa fa-file-excel"></i>
- Export ke Excel</a>
- <a href="./laporan/laporan_pelanggan_pdf.php" target="_blank" class="btn btn-danger mb-3"><i class="fa fa-file-pdf"></i>
- Export ke PDF</a>
+    <a href="?p=pelanggan&aksi=cetak" class="btn btn-primary mb-3"><i class="fa fa-plus"></i> Cetak Laporan</a>
 </div>
 <div class="card mb-4">
     <div class="card-header">
@@ -34,10 +31,10 @@ $sqlPelanggan = $conn->query("SELECT * FROM tb_pelanggan ORDER BY nama_pelanggan
                     </tr>
                 </thead>
                 <tbody>
-                    <?php 
+                    <?php
                     $no = 1;
                     while ($pecahPelanggan = $sqlPelanggan->fetch_assoc()) {
-                    $jk = ($pecahPelanggan['jk'] == 'L') ? 'Laki-Laki' : 'Perempuan';
+                        $jk = ($pecahPelanggan['jk'] == 'L') ? 'Laki-Laki' : 'Perempuan';
                     ?>
                     <tr>
                         <td><?= $no++; ?></td>
@@ -46,8 +43,10 @@ $sqlPelanggan = $conn->query("SELECT * FROM tb_pelanggan ORDER BY nama_pelanggan
                         <td><?= $pecahPelanggan['tgl_lahir']; ?></td>
                         <td><?= $jk; ?></td>
                         <td>
-                            <a href="?p=pelanggan&aksi=ubah&id=<?= $pecahPelanggan['idpelanggan']; ?>" class="btn btn-info btn-sm"><i class="fa fa-edit"></i></a>
-                            <a href="javascript:;" class="btn btn-danger btn-sm"><i class="fa fa-trash" onclick="confirmation('?p=pelanggan&aksi=hapus&id=<?= $pecahPelanggan['idpelanggan']; ?>')"></i></a>
+                            <a href="?p=pelanggan&aksi=ubah&id=<?= $pecahPelanggan['idpelanggan']; ?>"
+                                class="btn btn-info btn-sm"><i class="fa fa-edit"></i></a>
+                            <a href="javascript:;" class="btn btn-danger btn-sm"><i class="fa fa-trash"
+                                    onclick="confirmation('?p=pelanggan&aksi=hapus&id=<?= $pecahPelanggan['idpelanggan']; ?>')"></i></a>
                         </td>
                     </tr>
                     <?php } ?>

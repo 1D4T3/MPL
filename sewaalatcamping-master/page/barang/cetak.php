@@ -1,21 +1,18 @@
 <?php
 require_once './config/functions.php';
 
-// Query the database for the required sales transaction data
-$sql = $conn->query("SELECT * FROM tb_penjualan 
-                     INNER JOIN tb_pelanggan ON tb_penjualan.idpelanggan = tb_pelanggan.idpelanggan 
-                     INNER JOIN tb_user ON tb_penjualan.iduser = tb_user.iduser
-                     WHERE status = 'jual'") or die(mysqli_error($conn));
+// Query the database for the required item data
+$ambilBarang = $conn->query("SELECT * FROM tb_barang ORDER BY jumlah_barang DESC") or die(mysqli_error($conn));
 
 // Check if there are any results
-if ($sql->num_rows > 0) {
+if ($ambilBarang->num_rows > 0) {
 ?>
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
-    <title>Laporan Data Transaksi Penjualan</title>
+    <title>Laporan Data Barang</title>
     <style>
     body {
         font-family: Arial, sans-serif;
@@ -56,28 +53,26 @@ if ($sql->num_rows > 0) {
 
 <body>
     <div class="container">
-        <h1>Laporan Data Transaksi Penjualan</h1>
+        <h1>Laporan Data Barang</h1>
         <table>
             <thead>
                 <tr>
                     <th>No</th>
-                    <th>Nama Petugas</th>
-                    <th>Nama Pelanggan</th>
-                    <th>Status</th>
-                    <th>Total</th>
+                    <th>Nama Barang</th>
+                    <th>Harga</th>
+                    <th>Stok</th>
                 </tr>
             </thead>
             <tbody>
                 <?php
                     $no = 1;
-                    while ($pecah = $sql->fetch_assoc()) {
+                    while ($pecahBarang = $ambilBarang->fetch_assoc()) {
                     ?>
                 <tr>
                     <td><?= $no++; ?></td>
-                    <td><?= $pecah['nama']; ?></td>
-                    <td><?= $pecah['nama_pelanggan']; ?></td>
-                    <td><?= $pecah['status']; ?></td>
-                    <td><?= number_format($pecah['total']); ?></td>
+                    <td><?= $pecahBarang['namabarang']; ?></td>
+                    <td>Rp. <?= number_format($pecahBarang['harga']); ?></td>
+                    <td><?= $pecahBarang['jumlah_barang']; ?></td>
                 </tr>
                 <?php } ?>
             </tbody>
@@ -93,6 +88,6 @@ if ($sql->num_rows > 0) {
 </html>
 <?php
 } else {
-    echo "Tidak ada data transaksi penjualan yang tersedia.";
+    echo "Tidak ada data barang yang tersedia.";
 }
 ?>
