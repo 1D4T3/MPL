@@ -29,7 +29,8 @@ if (isset($_SESSION['pesan'])) {
 <div class="col-md-6">
     <a href="?p=penjualan&aksi=pilih" class="btn btn-primary mb-3"><i class="fa fa-plus"></i> Tambah Transaksi
         Penjualan</a>
-    <a href="?p=penjualan&aksi=cetak" class="btn btn-primary mb-3"><i class="fa fa-plus"></i> Cetak Laporan</a>
+    <a href="?p=penjualan&aksi=cetak" class="btn btn-primary mb-3">Cetak Data Master</a>
+    <a href="?p=penjualan&aksi=cetakrecent" class="btn btn-primary mb-3">Cetak Laporan</a>
 </div>
 <div class="card mb-4">
     <div class="card-header">

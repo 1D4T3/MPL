@@ -28,7 +28,9 @@ if (isset($_SESSION['pesan'])) {
 </ol>
 <div class="col-md-6">
     <a href="?p=penyewaan&aksi=pilih" class="btn btn-primary mb-3"><i class="fa fa-plus"></i> Tambah Transaksi</a>
-    <a href="?p=penyewaan&aksi=cetak" class="btn btn-primary mb-3"><i class="fa fa-plus"></i> Cetak Laporan</a>
+    <a href="?p=penyewaan&aksi=cetak" class="btn btn-primary mb-3"> Cetak Data Master</a>
+    <a href="?p=penyewaan&aksi=cetakrecent" class="btn btn-primary mb-3"> Cetak Laporan</a>
+    <a href="?p=penyewaan&aksi=cetakterlambat" class="btn btn-primary mb-3"> Cetak Laporan Keterlambatan</a>
 </div>
 <div class="card mb-4">
     <div class="card-header">

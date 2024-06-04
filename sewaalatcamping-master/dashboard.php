@@ -121,6 +121,10 @@ $aksi = @$_GET['aksi'];
                             <div class="sb-nav-link-icon"><i class="fas fa-hands-helping" aria-hidden="true"></i></div>
                             Transaksi Penjualan
                         </a>
+                        <a class="nav-link" href="?p=penjualan">
+                            <div class="sb-nav-link-icon"><i class="fas fa-hands-helping" aria-hidden="true"></i></div>
+                            Laporan Permasalahan
+                        </a>
                     </div>
                 </div>
                 <div class="sb-sidenav-footer">
@@ -172,6 +176,10 @@ $aksi = @$_GET['aksi'];
                             require_once('page/penyewaan/simpan.php');
                         } else if ($aksi == 'cetak') {
                             require_once('page/penyewaan/cetak.php');
+                        } else if ($aksi == 'cetak') {
+                            require_once('page/penyewaan/cetakrecent.php');
+                        } else if ($aksi == 'cetak') {
+                            require_once('page/penyewaan/cetakterlambat.php');
                         } 
                     } else if ($page == 'penjualan') {
                         if ($aksi == '') {
@@ -190,6 +198,23 @@ $aksi = @$_GET['aksi'];
                             require_once ('page/penjualan/simpan.php');
                         } else if ($aksi == 'cetak') {
                             require_once ('page/penjualan/cetak.php');
+                        } else if ($aksi == 'cetak') {
+                            require_once ('page/penjualan/cetakrecent.php');
+                        }
+                        
+                    } else if ($page == 'permasalahan'){ 
+                        if ($aksi == ''){
+                            require_once 'page/permasalahan/permasalahan.php';
+                        } else if ($aksi == 'permasalahan'){
+                            require_once 'page/permasalahan/permasalahan.php';
+                        } else if ($aksi == 'kehilangan'){
+                            require_once 'page/permasalahan/kehilangan.php';
+                        } else if ($aksi == 'kerusakan'){
+                            require_once 'page/permasalahan/kerusakan.php';
+                        } else if ($aksi == 'cetakhilang'){
+                            require_once 'page/permasalahan/cetakhilang.php';
+                        } else if ($aksi == 'cetakrusak'){
+                            require_once 'page/permasalahan/cetakrusak.php';
                         }
                     } else { ?>
                     <ol class="breadcrumb mb-4 mt-4">
