@@ -2,10 +2,10 @@
 require_once './config/functions.php';
 
 // Query the database for the required item data
-$sql = $conn->query("SELECT * FROM tb_barang ORDER BY jumlah_barang DESC") or die(mysqli_error($conn));
+$ambilBarang = $conn->query("SELECT * FROM tb_barang ORDER BY jumlah_barang DESC") or die(mysqli_error($conn));
 
 // Check if there are any results
-if ($sql->num_rows > 0) {
+if ($ambilBarang->num_rows > 0) {
 ?>
     <!DOCTYPE html>
     <html lang="en">
@@ -60,19 +60,19 @@ if ($sql->num_rows > 0) {
                         <th>No</th>
                         <th>Nama Barang</th>
                         <th>Harga</th>
-                        <th>Jumlah Barang</th>
+                        <th>Stok</th>
                     </tr>
                 </thead>
                 <tbody>
                     <?php
                     $no = 1;
-                    while ($pecah = $sql->fetch_assoc()) {
+                    while ($pecahBarang = $ambilBarang->fetch_assoc()) {
                     ?>
                         <tr>
                             <td><?= $no++; ?></td>
-                            <td><?= $pecah['namabarang']; ?></td>
-                            <td><?= number_format($pecah['harga']); ?></td>
-                            <td><?= $pecah['jumlah_barang']; ?></td>
+                            <td><?= $pecahBarang['namabarang']; ?></td>
+                            <td>Rp. <?= number_format($pecahBarang['harga']); ?></td>
+                            <td><?= $pecahBarang['jumlah_barang']; ?></td>
                         </tr>
                     <?php } ?>
                 </tbody>
