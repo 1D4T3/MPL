@@ -10,7 +10,7 @@ $sqlPelanggan = $conn->query("SELECT * FROM tb_pelanggan ORDER BY nama_pelanggan
 </ol>
 <div class="col-md-12">
     <a href="?p=pelanggan&aksi=tambah" class="btn btn-primary mb-3"><i class="fa fa-plus"></i> Tambah Data Pelanggan</a>
-    <a href="?p=pelanggan&aksi=cetak" class="btn btn-primary mb-3"><i class="fa fa-plus"></i> Cetak Laporan</a>
+    <!-- <a href="?p=pelanggan&aksi=cetak" class="btn btn-primary mb-3"><i class="fa fa-plus"></i> Cetak Laporan</a> -->
 </div>
 <div class="card mb-4">
     <div class="card-header">
@@ -36,19 +36,17 @@ $sqlPelanggan = $conn->query("SELECT * FROM tb_pelanggan ORDER BY nama_pelanggan
                     while ($pecahPelanggan = $sqlPelanggan->fetch_assoc()) {
                         $jk = ($pecahPelanggan['jk'] == 'L') ? 'Laki-Laki' : 'Perempuan';
                     ?>
-                    <tr>
-                        <td><?= $no++; ?></td>
-                        <td><?= $pecahPelanggan['nama_pelanggan']; ?></td>
-                        <td><?= $pecahPelanggan['alamat']; ?></td>
-                        <td><?= $pecahPelanggan['tgl_lahir']; ?></td>
-                        <td><?= $jk; ?></td>
-                        <td>
-                            <a href="?p=pelanggan&aksi=ubah&id=<?= $pecahPelanggan['idpelanggan']; ?>"
-                                class="btn btn-info btn-sm"><i class="fa fa-edit"></i></a>
-                            <a href="javascript:;" class="btn btn-danger btn-sm"><i class="fa fa-trash"
-                                    onclick="confirmation('?p=pelanggan&aksi=hapus&id=<?= $pecahPelanggan['idpelanggan']; ?>')"></i></a>
-                        </td>
-                    </tr>
+                        <tr>
+                            <td><?= $no++; ?></td>
+                            <td><?= $pecahPelanggan['nama_pelanggan']; ?></td>
+                            <td><?= $pecahPelanggan['alamat']; ?></td>
+                            <td><?= $pecahPelanggan['tgl_lahir']; ?></td>
+                            <td><?= $jk; ?></td>
+                            <td>
+                                <a href="?p=pelanggan&aksi=ubah&id=<?= $pecahPelanggan['idpelanggan']; ?>" class="btn btn-info btn-sm"><i class="fa fa-edit"></i></a>
+                                <a href="javascript:;" class="btn btn-danger btn-sm"><i class="fa fa-trash" onclick="confirmation('?p=pelanggan&aksi=hapus&id=<?= $pecahPelanggan['idpelanggan']; ?>')"></i></a>
+                            </td>
+                        </tr>
                     <?php } ?>
                 </tbody>
             </table>

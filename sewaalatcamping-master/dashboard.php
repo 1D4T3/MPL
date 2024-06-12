@@ -69,16 +69,13 @@ $aksi = @$_GET['aksi'];
 <body>
     <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
         <a class="navbar-brand" href="index.php"><i class="fas fa-mountain mr-2"></i>Yukk Camping Renting & Buying</a>
-        <button class="btn btn-link btn-sm order-1 order-lg-0 ml-5" id="sidebarToggle" href="#"><i
-                class="fas fa-bars"></i></button>
+        <button class="btn btn-link btn-sm order-1 order-lg-0 ml-5" id="sidebarToggle" href="#"><i class="fas fa-bars"></i></button>
         <!-- Navbar-->
         <ul class="navbar-nav ml-auto mr-0 mr-md-3 my-2 my-md-0 pb-2">
             <li class="nav-item dropdown no-arrow">
-                <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown"
-                    aria-haspopup="true" aria-expanded="false">
+                <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <span class="mr-2 d-none d-lg-inline text-white-600 small"><?= $_SESSION['login']['nama']; ?></span>
-                    <img class="img-profile rounded-circle profil"
-                        src="<?php echo "assets/img/" . $_SESSION['login']['foto'] ?>">
+                    <img class="img-profile rounded-circle profil" src="<?php echo "assets/img/" . $_SESSION['login']['foto'] ?>">
                 </a>
                 <!-- Dropdown - User Information -->
                 <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
@@ -121,10 +118,10 @@ $aksi = @$_GET['aksi'];
                             <div class="sb-nav-link-icon"><i class="fas fa-hands-helping" aria-hidden="true"></i></div>
                             Transaksi Penjualan
                         </a>
-                        <a class="nav-link" href="?p=penjualan">
+                        <!-- <a class="nav-link" href="?p=penjualan">
                             <div class="sb-nav-link-icon"><i class="fas fa-hands-helping" aria-hidden="true"></i></div>
                             Laporan Permasalahan
-                        </a>
+                        </a> -->
                     </div>
                 </div>
                 <div class="sb-sidenav-footer">
@@ -180,7 +177,7 @@ $aksi = @$_GET['aksi'];
                             require_once('page/penyewaan/cetakrecent.php');
                         } else if ($aksi == 'cetak') {
                             require_once('page/penyewaan/cetakterlambat.php');
-                        } 
+                        }
                     } else if ($page == 'penjualan') {
                         if ($aksi == '') {
                             require_once 'page/penjualan/penjualan.php';
@@ -193,129 +190,128 @@ $aksi = @$_GET['aksi'];
                         } else if ($aksi == 'detail') {
                             require_once 'page/penjualan/detailtransaksi.php';
                         } else if ($aksi == 'pilih') {
-                            require_once ('page/penjualan/pilihbarang.php');
+                            require_once('page/penjualan/pilihbarang.php');
                         } else if ($aksi == 'simpan') {
-                            require_once ('page/penjualan/simpan.php');
+                            require_once('page/penjualan/simpan.php');
                         } else if ($aksi == 'cetak') {
-                            require_once ('page/penjualan/cetak.php');
+                            require_once('page/penjualan/cetak.php');
                         } else if ($aksi == 'cetak') {
-                            require_once ('page/penjualan/cetakrecent.php');
+                            require_once('page/penjualan/cetakrecent.php');
                         }
-                        
-                    } else if ($page == 'permasalahan'){ 
-                        if ($aksi == ''){
+                    } else if ($page == 'permasalahan') {
+                        if ($aksi == '') {
                             require_once 'page/permasalahan/permasalahan.php';
-                        } else if ($aksi == 'permasalahan'){
+                        } else if ($aksi == 'permasalahan') {
                             require_once 'page/permasalahan/permasalahan.php';
-                        } else if ($aksi == 'kehilangan'){
+                        } else if ($aksi == 'kehilangan') {
                             require_once 'page/permasalahan/kehilangan.php';
-                        } else if ($aksi == 'kerusakan'){
+                        } else if ($aksi == 'kerusakan') {
                             require_once 'page/permasalahan/kerusakan.php';
-                        } else if ($aksi == 'cetakhilang'){
+                        } else if ($aksi == 'cetakhilang') {
                             require_once 'page/permasalahan/cetakhilang.php';
-                        } else if ($aksi == 'cetakrusak'){
+                        } else if ($aksi == 'cetakrusak') {
                             require_once 'page/permasalahan/cetakrusak.php';
                         }
                     } else { ?>
-                    <ol class="breadcrumb mb-4 mt-4">
-                        <!-- <li class="breadcrumb-item"><a href="index.php">Dashboard</a></li> -->
-                        <li class="breadcrumb-item active">
-                            <h4>Selamat Datang <strong><?= $_SESSION['login']['nama']; ?></strong></h4>
-                        </li>
-                    </ol>
-                    <div class="container-flud">
-                        <div class="row">
-                            <div class="col-xl-3 col-md-6 mb-4 mt-4">
-                                <div class="card border-left-primary shadow h-100 py-2">
-                                    <div class="card-body">
-                                        <div class="row no-gutters align-items-center">
-                                            <div class="col mr-2">
-                                                <div class="text-xs font-weight-bold text-gray-600 text-uppercase mb-1">
-                                                    Jumlah Pelanggan Penyewaan</div>
-                                                <div class="h2 mb-0 font-weight-bold text-gray-800">
-                                                    <?php
+                        <ol class="breadcrumb mb-4 mt-4">
+                            <!-- <li class="breadcrumb-item"><a href="index.php">Dashboard</a></li> -->
+                            <li class="breadcrumb-item active">
+                                <h4>Selamat Datang <strong><?= $_SESSION['login']['nama']; ?></strong></h4>
+                            </li>
+                        </ol>
+                        <div class="container-flud">
+                            <div class="row">
+                                <div class="col-xl-3 col-md-6 mb-4 mt-4">
+                                    <div class="card border-left-primary shadow h-100 py-2">
+                                        <div class="card-body">
+                                            <div class="row no-gutters align-items-center">
+                                                <div class="col mr-2">
+                                                    <div class="text-xs font-weight-bold text-gray-600 text-uppercase mb-1">
+                                                        Jumlah Pelanggan Penyewaan</div>
+                                                    <div class="h2 mb-0 font-weight-bold text-gray-800">
+                                                        <?php
                                                         $jumlahPelanggan = $conn->query("SELECT count(idpelanggan) FROM tb_pelanggan") or die(mysqli_error($conn));
                                                         $dataPelanggan = mysqli_fetch_row($jumlahPelanggan);
                                                         echo "$dataPelanggan[0]";
                                                         ?>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                            <div class="col-auto">
-                                                <i class="fas fa-user fa-2x text-gray-300"></i>
+                                                <div class="col-auto">
+                                                    <i class="fas fa-user fa-2x text-gray-300"></i>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="col-xl-3 col-md-6 mb-4 mt-4">
-                                <div class="card border-left-primary shadow h-100 py-2">
-                                    <div class="card-body">
-                                        <div class="row no-gutters align-items-center">
-                                            <div class="col mr-2">
-                                                <div class="text-xs font-weight-bold text-gray-600 text-uppercase mb-1">
-                                                    Jumlah Barang Tersedia</div>
-                                                <div class="h2 mb-0 font-weight-bold text-gray-800">
-                                                    <?php
+                                <div class="col-xl-3 col-md-6 mb-4 mt-4">
+                                    <div class="card border-left-primary shadow h-100 py-2">
+                                        <div class="card-body">
+                                            <div class="row no-gutters align-items-center">
+                                                <div class="col mr-2">
+                                                    <div class="text-xs font-weight-bold text-gray-600 text-uppercase mb-1">
+                                                        Jumlah Barang Tersedia</div>
+                                                    <div class="h2 mb-0 font-weight-bold text-gray-800">
+                                                        <?php
                                                         $jumlahBarang = $conn->query("SELECT count(idbarang) FROM tb_barang WHERE jumlah_barang > 0") or die(mysqli_error($conn));
                                                         $dataBarang = mysqli_fetch_row($jumlahBarang);
                                                         echo "$dataBarang[0]";
                                                         ?>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                            <div class="col-auto">
-                                                <i class="fas fa-boxes fa-2x text-gray-300"></i>
+                                                <div class="col-auto">
+                                                    <i class="fas fa-boxes fa-2x text-gray-300"></i>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="col-xl-3 col-md-6 mb-4 mt-4">
-                                <div class="card border-left-primary shadow h-100 py-2">
-                                    <div class="card-body">
-                                        <div class="row no-gutters align-items-center">
-                                            <div class="col mr-2">
-                                                <div class="text-xs font-weight-bold text-gray-600 text-uppercase mb-1">
-                                                    Total Seluruh Pendapatan</div>
-                                                <div class="h2 mb-0 font-weight-bold text-gray-800">
-                                                    <?php
+                                <div class="col-xl-3 col-md-6 mb-4 mt-4">
+                                    <div class="card border-left-primary shadow h-100 py-2">
+                                        <div class="card-body">
+                                            <div class="row no-gutters align-items-center">
+                                                <div class="col mr-2">
+                                                    <div class="text-xs font-weight-bold text-gray-600 text-uppercase mb-1">
+                                                        Total Seluruh Pendapatan</div>
+                                                    <div class="h2 mb-0 font-weight-bold text-gray-800">
+                                                        <?php
                                                         $total = $conn->query("SELECT SUM(total) FROM tb_penyewaan") or die(mysqli_error($conn));
                                                         $dataTotal = mysqli_fetch_row($total);
                                                         $totalPendapatanformat = number_format($dataTotal[0]);
                                                         echo "Rp. $totalPendapatanformat";
                                                         ?>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                            <div class="col-auto">
-                                                <i class="fas fa-money-bill fa-2x text-gray-300"></i>
+                                                <div class="col-auto">
+                                                    <i class="fas fa-money-bill fa-2x text-gray-300"></i>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="card mb-4 p-4">
-                            <div class="card-header">
-                                <i class="fas fa-table mr-1"></i>
-                                Data Transaksi Selesai
-                            </div>
-                            <div class="card-body">
-                                <div class="table-responsive">
-                                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                                        <thead>
-                                            <tr>
-                                                <th>No</th>
-                                                <th>Nama Petugas</th>
-                                                <th>Nama Pelanggan</th>
-                                                <th>Tanggal Pinjam</th>
-                                                <th>Tanggal Kembali</th>
-                                                <th>Keterlambatan</th>
-                                                <th>Status</th>
-                                                <th>Total Bayar</th>
-                                                <th>Aksi</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <?php
+                            <div class="card mb-4 p-4">
+                                <div class="card-header">
+                                    <i class="fas fa-table mr-1"></i>
+                                    Data Transaksi Selesai
+                                </div>
+                                <div class="card-body">
+                                    <div class="table-responsive">
+                                        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                            <thead>
+                                                <tr>
+                                                    <th>No</th>
+                                                    <th>Nama Petugas</th>
+                                                    <th>Nama Pelanggan</th>
+                                                    <th>Tanggal Pinjam</th>
+                                                    <th>Tanggal Kembali</th>
+                                                    <th>Keterlambatan</th>
+                                                    <th>Status</th>
+                                                    <th>Total Bayar</th>
+                                                    <th>Aksi</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <?php
                                                 $no = 1;
 
                                                 $sql = $conn->query("SELECT * FROM tb_penyewaan INNER JOIN tb_pelanggan 
@@ -327,14 +323,14 @@ $aksi = @$_GET['aksi'];
                                                 while ($pecah = $sql->fetch_assoc()) {
                                                     $idsewa = $pecah['idsewa'];
                                                 ?>
-                                            <tr>
-                                                <td><?= $no++; ?></td>
-                                                <td><?= $pecah['nama']; ?></td>
-                                                <td><?= $pecah['nama_pelanggan']; ?></td>
-                                                <td><?= $pecah['tanggalsewa']; ?></td>
-                                                <td><?= $pecah['tanggalkembali']; ?></td>
-                                                <td>
-                                                    <?php
+                                                    <tr>
+                                                        <td><?= $no++; ?></td>
+                                                        <td><?= $pecah['nama']; ?></td>
+                                                        <td><?= $pecah['nama_pelanggan']; ?></td>
+                                                        <td><?= $pecah['tanggalsewa']; ?></td>
+                                                        <td><?= $pecah['tanggalkembali']; ?></td>
+                                                        <td>
+                                                            <?php
 
                                                             $denda = 5000;
                                                             $tgl_dateline = $pecah['tanggalkembali'];
@@ -344,32 +340,30 @@ $aksi = @$_GET['aksi'];
                                                             $lambat = terlambat($tgl_dateline, $tgl_kembali);
                                                             $denda1 = $lambat * $denda;
                                                             ?>
-                                                    <?php
+                                                            <?php
                                                             if ($lambat > 0) {
                                                             ?>
-                                                    <div style='color:red;'><?= $lambat ?> hari<br> (Rp.
-                                                        <?= number_format($denda1) ?>)</div>
-                                                    <?php
+                                                                <div style='color:red;'><?= $lambat ?> hari<br> (Rp.
+                                                                    <?= number_format($denda1) ?>)</div>
+                                                            <?php
                                                             } else {
                                                                 echo "Tidak terlambat";
                                                             }
                                                             ?>
-                                                </td>
-                                                <td><?= $pecah['status']; ?></td>
-                                                <td><?= $pecah['total'] + $denda1; ?></td>
-                                                <td>
-                                                    <a href="?p=penyewaan&aksi=detail&idsewa=<?= $pecah["idsewa"]; ?>"
-                                                        class="btn btn-success btn-sm"><i
-                                                            class="fas fa-info mr-2"></i>Detail Penyewaan</a>
-                                                </td>
-                                            </tr>
-                                            <?php } ?>
-                                        </tbody>
-                                    </table>
+                                                        </td>
+                                                        <td><?= $pecah['status']; ?></td>
+                                                        <td><?= $pecah['total'] + $denda1; ?></td>
+                                                        <td>
+                                                            <a href="?p=penyewaan&aksi=detail&idsewa=<?= $pecah["idsewa"]; ?>" class="btn btn-success btn-sm"><i class="fas fa-info mr-2"></i>Detail Penyewaan</a>
+                                                        </td>
+                                                    </tr>
+                                                <?php } ?>
+                                            </tbody>
+                                        </table>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
                     <?php
                     }
                     ?>
@@ -385,8 +379,7 @@ $aksi = @$_GET['aksi'];
         </div>
     </div>
     <!-- Modal HTML -->
-    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
+    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">

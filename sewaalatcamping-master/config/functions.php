@@ -29,11 +29,13 @@ function upload()
 		return false;
 	}
 
-	$fileNameBaru = uniqid();
-	$fileNameBaru .= '.';
-	$fileNameBaru .= $ektensiFoto;
+	$fileNameBaru = uniqid() . '.' . $ektensiFoto;
 
-	move_uploaded_file($tmpFoto, $path . $fileNameBaru);
+	if (!move_uploaded_file($tmpFoto, $path . $fileNameBaru)) {
+		echo "<script>alert('Gagal mengunggah gambar.');</script>";
+		return false;
+	}
+
 	return $fileNameBaru;
 }
 
@@ -41,23 +43,24 @@ function register($data)
 {
 	global $conn;
 	$nama = htmlspecialchars($data['nama']);
-	$username = $conn->real_escape_string($_POST['username']);
-	$password = $conn->real_escape_string($_POST['password']);
-	$password2 = $conn->real_escape_string($_POST['password2']);
+	$username = $conn->real_escape_string($data['username']);
+	$password = $conn->real_escape_string($data['password']);
+	$password2 = $conn->real_escape_string($data['password2']);
 
 	// jika username sudah terdaftar
-	if (mysqli_query($conn, "SELECT * FROM tb_user WHERE username = '$username'")) {
+	$result = $conn->query("SELECT * FROM tb_user WHERE username = '$username'");
+	if ($result->num_rows > 0) {
 		echo "<script>alert('Username sudah terdaftar!');window.location='register.php';</script>";
 		return false;
 	}
 
-	if ($password != $password2) {
-		echo "<script>alert('konfirmasi password salah.');</script>";
+	if ($password !== $password2) {
+		echo "<script>alert('Konfirmasi password salah.');</script>";
 		return false;
 	}
 
 	if (strlen($password) < 6) {
-		echo "<script>alert('Password terlalu pendek, maksimal 6 digit');window.location='register.php';</script>";
+		echo "<script>alert('Password terlalu pendek, minimal 6 karakter');window.location='register.php';</script>";
 		return false;
 	}
 
@@ -67,10 +70,13 @@ function register($data)
 		return false;
 	}
 
-	$password = password_hash($password, PASSWORD_ARGON2ID);
+	$hashedPassword = password_hash($password, PASSWORD_ARGON2ID);
 
-	$conn->query("INSERT INTO tb_user VALUES (null, '$username', '$password', '$nama', '$foto')") or die(mysqli_error($conn));
-	return $conn->affected_rows;
+	if ($conn->query("INSERT INTO tb_user (username, password, nama, foto) VALUES ('$username', '$hashedPassword', '$nama', '$foto')")) {
+		return $conn->affected_rows;
+	} else {
+		die("Error: " . $conn->error);
+	}
 }
 
 function terlambat($tgl_dateline, $tgl_kembali)

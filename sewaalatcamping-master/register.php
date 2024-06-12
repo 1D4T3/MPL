@@ -9,7 +9,6 @@ if (isset($_POST['regis'])) {
         echo "<script>alert('Akun Gagal Dibuat.');window.location='register.php';</script>";
     }
 }
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -22,8 +21,7 @@ if (isset($_POST['regis'])) {
     <meta name="author" content="" />
     <title>Halaman Registrasi</title>
     <link href="css/styles.css" rel="stylesheet" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js" crossorigin="anonymous">
-    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js" crossorigin="anonymous"></script>
 </head>
 
 <body class="bg-primary">
@@ -41,40 +39,32 @@ if (isset($_POST['regis'])) {
                                     <form action="" method="post" enctype="multipart/form-data">
                                         <div class="form-group">
                                             <label class="small" for="foto">Upload Foto</label>
-                                            <input class="form-control-file" id="foto" name="foto" type="file"
-                                                placeholder="Masukan anda lengkap anda" accept=".png, .jpg, .jpeg" />
+                                            <input class="form-control-file" id="foto" name="foto" type="file" placeholder="Masukkan foto anda" accept=".png, .jpg, .jpeg" required />
                                         </div>
                                         <div class="form-group">
                                             <label class="small mb-1" for="nama">Nama Lengkap</label>
-                                            <input class="form-control py-4" id="nama" name="nama" type="text"
-                                                placeholder="Masukan anda lengkap anda" required />
+                                            <input class="form-control py-4" id="nama" name="nama" type="text" placeholder="Masukkan nama lengkap anda" required />
                                         </div>
                                         <div class="form-group">
                                             <label class="small mb-1" for="username">Username</label>
-                                            <input class="form-control py-4" id="username" type="text" name="username"
-                                                aria-describedby="emailHelp" placeholder="Masukan username anda"
-                                                required />
+                                            <input class="form-control py-4" id="username" type="text" name="username" placeholder="Masukkan username anda" required />
                                         </div>
                                         <div class="form-row">
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label class="small mb-1" for="password">Password</label>
-                                                    <input class="form-control py-4" id="password" name="password"
-                                                        type="password" placeholder="Masukan password" required />
+                                                    <input class="form-control py-4" id="password" name="password" type="password" placeholder="Masukkan password" required />
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="form-group">
-                                                    <label class="small mb-1" for="password2">Konfirmasi
-                                                        Password</label>
-                                                    <input class="form-control py-4" id="password2" name="password2"
-                                                        type="password" placeholder="Konfirmasi password" required />
+                                                    <label class="small mb-1" for="password2">Konfirmasi Password</label>
+                                                    <input class="form-control py-4" id="password2" name="password2" type="password" placeholder="Konfirmasi password" required />
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="form-group mt-4 mb-0">
-                                            <button type="submit" name="regis" class="btn btn-primary btn-block">Buat
-                                                Akun</button>
+                                            <button type="submit" name="regis" class="btn btn-primary btn-block">Buat Akun</button>
                                         </div>
                                     </form>
                                 </div>

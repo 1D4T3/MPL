@@ -1,7 +1,9 @@
 <?php
 if (!isset($_SESSION['cart'])) {
     header('Location: ?p=penyewaan&aksi=penyewaan');
+    exit;
 }
+
 ob_start();
 
 $cart = unserialize(serialize($_SESSION['cart']));
@@ -21,23 +23,43 @@ for ($i = 0; $i < count($cart); $i++) {
     $total_bayar += $cart[$i]['jumlah'] * $cart[$i]['harga'];
 }
 
-//save data penyewaan ke database
-$conn->query("INSERT INTO tb_penyewaan (iduser, idpelanggan, tanggalsewa, tanggalkembali, denda, total, `status`) VALUES ('$iduser', '$idpelanggan','$tgl_sewa','$tgl_kembali',0,'$total_bayar','sewa')") or die(mysqli_error($conn));
-$idsewa = mysqli_insert_id($conn);
+// Start transaction
+$conn->begin_transaction();
+try {
+    // Save data penyewaan ke database
+    $conn->query("INSERT INTO tb_penyewaan (iduser, idpelanggan, tanggalsewa, tanggalkembali, denda, total, `status`) VALUES ('$iduser', '$idpelanggan','$tgl_sewa','$tgl_kembali',0,'$total_bayar','sewa')") or die(mysqli_error($conn));
+    $idsewa = $conn->insert_id;
 
+    for ($i = 0; $i < count($cart); $i++) {
+        $idbarang = $cart[$i]['idbarang'];
+        $jumlah = $cart[$i]['jumlah'];
+        $subharga = $cart[$i]['harga'] * $cart[$i]['jumlah'];
 
-for ($i = 0; $i < count($cart); $i++) {
-    $idbarang = $cart[$i]['idbarang'];
-    $jumlah = $cart[$i]['jumlah'];
-    $subharga = $cart[$i]['harga'] * $cart[$i]['jumlah'];
+        $conn->query("INSERT INTO tb_detailsewa (idsewa, idbarang, jumlah, subharga) VALUES('$idsewa', '$idbarang', '$jumlah', '$subharga')") or die(mysqli_error($conn));
+        $conn->query("UPDATE tb_barang SET jumlah_barang = (jumlah_barang-$jumlah) WHERE idbarang = '$idbarang'") or die(mysqli_error($conn));
+    }
 
-    $conn->query("INSERT INTO tb_detailsewa (idsewa, idbarang, jumlah, subharga) VALUES('$idsewa', '$idbarang', '$jumlah', '$subharga')") or die(mysqli_error($conn));
-    $conn->query("UPDATE tb_barang SET jumlah_barang = (jumlah_barang-$jumlah) WHERE idbarang = '$idbarang'") or die(mysqli_error($conn));
+    // Commit transaction
+    $conn->commit();
+
+    // Unset session keranjang
+    unset($_SESSION['cart']);
+    $_SESSION['pesan'] = "Data Transaksi sudah ditambahkan";
+
+    echo "<script>swal('Data berhasil ditambahkan', {
+        icon: 'success',
+    }).then((willUpdate) => {
+        if (willUpdate) {
+            window.location='?p=penyewaan';
+        }
+    });</script>";
+} catch (Exception $e) {
+    // Rollback transaction
+    $conn->rollback();
+    echo "<script>swal('Data gagal ditambahkan', {
+        icon: 'error',
+    });</script>";
 }
 
-//unset session keranjang
-unset($_SESSION['cart']);
-$_SESSION['pesan'] = "Data Transaksi sudah ditambahkan";
-header('Location: http://localhost/sewaalatcamping-master/dashboard.php?p=penyewaan&aksi=selesai');
 ob_end_flush();
 exit;
